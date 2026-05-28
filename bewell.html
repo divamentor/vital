@@ -12,59 +12,127 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#F5F1EB;--s1:#EAE3D8;--border:rgba(60,45,30,0.12);--border2:rgba(60,45,30,0.22);--border3:rgba(60,45,30,0.4);
-  --text:#1A1209;--text2:#2E2010;--muted:#5C4A38;--muted2:#8A7460;
-  --accent:#8B3A1A;--accent2:#B85C35;--amber:#C49020;--green:#3A6B45;--danger:#A83030;
-  --theme-accent:var(--accent2);--theme-border:rgba(184,92,53,0.35);--theme-bg:rgba(184,92,53,0.06);
-  --serif:'Playfair Display',serif;--sans:'Inter',sans-serif;
+  --bg:#F5F1EB;
+  --bg2:#EDE7DC;
+  --s1:#EAE3D8;
+  --border:rgba(60,45,30,0.12);
+  --border2:rgba(60,45,30,0.22);
+  --border3:rgba(60,45,30,0.4);
+  --text:#1A1209;
+  --text2:#2E2010;
+  --muted:#5C4A38;
+  --muted2:#8A7460;
+  --accent:#8B3A1A;
+  --accent2:#B85C35;
+  --amber:#C49020;
+  --green:#3A6B45;
+  --serif:'Playfair Display',serif;
+  --sans:'Inter',sans-serif;
 }
 body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:100vh;overflow-x:hidden}
 
-/* SCREEN TRANSITIONS */
-.screen{display:none;min-height:100vh;opacity:0;transform:translateX(30px);transition:opacity 0.4s ease,transform 0.4s ease}
+.screen{display:none;min-height:100vh}
 .screen.active{display:flex;flex-direction:column;align-items:center;justify-content:center}
-.screen.visible{opacity:1;transform:translateX(0)}
-.screen.exit{opacity:0;transform:translateX(-30px)}
 
 /* ══ INTRO ══ */
 #s-intro{padding:3rem 2rem;text-align:center;gap:0}
-.vital-wordmark{font-family:var(--serif);font-size:clamp(4.5rem,12vw,7.5rem);font-weight:400;letter-spacing:0.2em;color:var(--text);line-height:1;display:block;margin-bottom:0.25rem}
-.wellness-hero{font-size:clamp(0.6rem,2vw,0.75rem);font-weight:500;letter-spacing:0.65em;text-transform:uppercase;color:var(--accent2);display:block;margin-bottom:2.5rem}
+
+.vital-wordmark{
+  font-family:var(--serif);font-size:clamp(4.5rem,12vw,7.5rem);
+  font-weight:400;letter-spacing:0.2em;color:var(--text);line-height:1;
+  display:block;margin-bottom:0.25rem;
+}
+.wellness-hero{
+  font-family:var(--sans);font-size:clamp(0.6rem,2vw,0.75rem);
+  font-weight:500;letter-spacing:0.65em;text-transform:uppercase;
+  color:var(--accent2);display:block;margin-bottom:2.5rem;
+}
+
 .intro-rule{width:48px;height:1px;background:var(--border3);margin:0 auto 2rem}
-.intro-desc{max-width:340px;margin:0 auto 2.5rem;font-size:1rem;font-weight:300;color:var(--muted);line-height:1.75}
+
+.intro-desc{
+  max-width:340px;margin:0 auto 2.5rem;
+  font-size:1rem;font-weight:300;color:var(--muted);line-height:1.75;
+}
 .intro-desc strong{font-weight:500;color:var(--text2)}
-.step-list{display:flex;flex-direction:column;gap:0;max-width:310px;width:100%;margin:0 auto 2.5rem;border:1px solid var(--border)}
-.step-item{display:flex;align-items:center;gap:1rem;padding:0.85rem 1.25rem;border-bottom:1px solid var(--border)}
+
+.step-list{
+  display:flex;flex-direction:column;gap:0;
+  max-width:310px;width:100%;margin:0 auto 2.5rem;
+  border:1px solid var(--border);
+}
+.step-item{
+  display:flex;align-items:center;gap:1rem;
+  padding:0.85rem 1.25rem;border-bottom:1px solid var(--border);
+}
 .step-item:last-child{border-bottom:none}
-.step-n{font-size:0.55rem;font-weight:500;letter-spacing:0.2em;color:var(--accent2);min-width:18px}
+.step-n{
+  font-size:0.55rem;font-weight:500;letter-spacing:0.2em;
+  color:var(--accent2);min-width:18px;
+}
 .step-text{font-size:0.82rem;color:var(--muted2);font-weight:300}
-.btn-start{font-family:var(--sans);font-size:0.65rem;font-weight:500;letter-spacing:0.35em;text-transform:uppercase;padding:1rem 3rem;border:1px solid var(--accent);background:transparent;color:var(--accent);cursor:pointer;transition:all 0.35s;position:relative;overflow:hidden}
-.btn-start::before{content:'';position:absolute;inset:0;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform 0.35s cubic-bezier(0.23,1,0.32,1);z-index:-1}
-.btn-start:hover{color:var(--bg)}.btn-start:hover::before{transform:scaleX(1)}
+
+.btn-start{
+  font-family:var(--sans);font-size:0.65rem;font-weight:500;
+  letter-spacing:0.35em;text-transform:uppercase;
+  padding:1rem 3rem;border:1px solid var(--accent);
+  background:transparent;color:var(--accent);cursor:pointer;transition:all 0.35s;
+  position:relative;overflow:hidden;
+}
+.btn-start::before{
+  content:'';position:absolute;inset:0;background:var(--accent);
+  transform:scaleX(0);transform-origin:left;
+  transition:transform 0.35s cubic-bezier(0.23,1,0.32,1);z-index:-1;
+}
+.btn-start:hover{color:var(--bg)}
+.btn-start:hover::before{transform:scaleX(1)}
 
 /* ══ QUESTIONS ══ */
 #s-questions{padding:2rem;gap:1.5rem;justify-content:flex-start;padding-top:5rem}
 .q-header{display:flex;justify-content:space-between;align-items:center;width:100%;max-width:520px}
 .q-logo{font-family:var(--serif);font-size:1.15rem;font-weight:400;letter-spacing:0.25em;color:var(--text)}
 .q-progress{font-size:0.65rem;font-weight:400;color:var(--muted2);letter-spacing:0.1em}
+
 .q-bar{width:100%;max-width:520px;height:1px;background:var(--border)}
 .q-bar-fill{height:100%;background:var(--accent2);transition:width 0.5s ease}
-.q-card{width:100%;max-width:520px;padding:2.75rem 0;position:relative;overflow:hidden}
-.q-inner{transition:opacity 0.25s ease,transform 0.25s ease}
-.q-inner.slide-out{opacity:0;transform:translateX(-20px)}
-.q-inner.slide-in{opacity:0;transform:translateX(20px)}
-.q-domain{font-size:0.6rem;font-weight:500;letter-spacing:0.45em;color:var(--accent2);text-transform:uppercase;margin-bottom:1rem}
-.q-text{font-family:var(--serif);font-size:1.55rem;font-weight:400;line-height:1.5;color:var(--text);margin-bottom:2.5rem}
+
+.q-card{width:100%;max-width:520px;padding:2.75rem 0}
+.q-domain{
+  font-size:0.6rem;font-weight:500;letter-spacing:0.45em;
+  color:var(--accent2);text-transform:uppercase;margin-bottom:1rem;
+}
+.q-text{
+  font-family:var(--serif);font-size:1.55rem;font-weight:400;
+  line-height:1.5;color:var(--text);margin-bottom:2.5rem;
+}
+
 .q-opts{display:flex;flex-direction:column;gap:0.4rem}
-.q-opt{display:flex;align-items:center;gap:1rem;padding:0.9rem 1.15rem;border:1px solid var(--border);background:transparent;cursor:pointer;transition:all 0.2s;text-align:left;font-family:var(--sans);font-size:0.85rem;color:var(--muted);font-weight:300;width:100%}
+.q-opt{
+  display:flex;align-items:center;gap:1rem;
+  padding:0.9rem 1.15rem;border:1px solid var(--border);
+  background:transparent;cursor:pointer;transition:all 0.2s;
+  text-align:left;font-family:var(--sans);font-size:0.85rem;
+  color:var(--muted);font-weight:300;width:100%;
+}
 .q-opt:hover{border-color:var(--border2);color:var(--text2);background:var(--s1)}
 .q-opt.selected{border-color:var(--accent2);color:var(--text2);background:rgba(184,92,53,0.07)}
 .q-opt-dot{width:5px;height:5px;border:1px solid var(--muted2);border-radius:50%;flex-shrink:0;transition:all 0.2s}
 .q-opt.selected .q-opt-dot{background:var(--accent2);border-color:var(--accent2)}
+
 .q-nav{display:flex;justify-content:space-between;align-items:center;width:100%;max-width:520px}
-.btn-ghost{font-family:var(--sans);font-size:0.65rem;font-weight:400;letter-spacing:0.2em;padding:0.65rem 1.1rem;border:1px solid var(--border);background:transparent;color:var(--muted2);cursor:pointer;transition:all 0.2s}
+.btn-ghost{
+  font-family:var(--sans);font-size:0.65rem;font-weight:400;
+  letter-spacing:0.2em;padding:0.65rem 1.1rem;
+  border:1px solid var(--border);background:transparent;
+  color:var(--muted2);cursor:pointer;transition:all 0.2s;
+}
 .btn-ghost:hover{border-color:var(--border2);color:var(--muted)}
-.btn-next{font-family:var(--sans);font-size:0.65rem;font-weight:500;letter-spacing:0.2em;padding:0.65rem 1.5rem;border:1px solid var(--border2);background:transparent;color:var(--muted);cursor:pointer;transition:all 0.2s}
+.btn-next{
+  font-family:var(--sans);font-size:0.65rem;font-weight:500;
+  letter-spacing:0.2em;padding:0.65rem 1.5rem;
+  border:1px solid var(--border2);background:transparent;
+  color:var(--muted);cursor:pointer;transition:all 0.2s;
+}
 .btn-next:not(:disabled):hover{border-color:var(--accent2);color:var(--accent2)}
 .btn-next:disabled{opacity:0.3;cursor:default}
 
@@ -73,13 +141,16 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:1
 .scan-header{display:flex;justify-content:space-between;align-items:center;width:100%;max-width:600px}
 .scan-logo{font-family:var(--serif);font-size:1.15rem;font-weight:400;letter-spacing:0.25em;color:var(--text)}
 .scan-phase{font-size:0.6rem;font-weight:500;letter-spacing:0.3em;color:var(--accent2)}
+
 .scan-stage-bar{display:flex;gap:3px;width:100%;max-width:600px}
 .scan-stage{flex:1;height:2px;background:var(--border);transition:background 0.4s}
 .scan-stage.done{background:var(--accent2)}
-.scan-stage.active{background:var(--accent2);animation:stagepulse 2s ease infinite}
-@keyframes stagepulse{0%,100%{opacity:1}50%{opacity:0.4}}
+.scan-stage.active{background:var(--accent2);animation:pulse 2s ease infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+
 .scan-main{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;width:100%;max-width:600px}
 @media(max-width:560px){.scan-main{grid-template-columns:1fr}}
+
 .cam-box{position:relative;aspect-ratio:3/4;background:var(--s1);border:1px solid var(--border);overflow:hidden}
 .cam-video{width:100%;height:100%;object-fit:cover;transform:scaleX(-1);display:block}
 .cam-canvas{position:absolute;inset:0;width:100%;height:100%;transform:scaleX(-1)}
@@ -88,27 +159,34 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:1
 .cam-corners .c.tr{top:10px;right:10px;border-width:1px 1px 0 0}
 .cam-corners .c.bl{bottom:10px;left:10px;border-width:0 0 1px 1px}
 .cam-corners .c.br{bottom:10px;right:10px;border-width:0 1px 1px 0}
-.cam-status{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);font-size:0.55rem;font-weight:500;letter-spacing:0.2em;color:var(--accent2);background:rgba(245,241,235,0.92);border:1px solid rgba(184,92,53,0.3);padding:3px 10px;white-space:nowrap}
+.cam-status{
+  position:absolute;bottom:10px;left:50%;transform:translateX(-50%);
+  font-size:0.55rem;font-weight:500;letter-spacing:0.2em;color:var(--accent2);
+  background:rgba(245,241,235,0.92);border:1px solid rgba(184,92,53,0.3);
+  padding:3px 10px;white-space:nowrap;
+}
 .cam-loading{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;background:var(--s1);z-index:10}
 .cam-loading.hidden{display:none}
 .spinner{width:28px;height:28px;border:1px solid var(--border2);border-top-color:var(--accent2);border-radius:50%;animation:spin 1s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 .cam-loading p{font-size:0.6rem;font-weight:400;letter-spacing:0.2em;color:var(--muted2)}
+
 .scan-info{display:flex;flex-direction:column;justify-content:space-between;gap:1rem}
 .scan-title{font-family:var(--serif);font-size:1.3rem;font-weight:400;line-height:1.45;color:var(--text);margin-bottom:0.5rem}
 .scan-desc{font-size:0.8rem;font-weight:300;color:var(--muted2);line-height:1.7}
+
 .scan-metrics{display:flex;flex-direction:column;gap:0}
 .metric-row{display:flex;justify-content:space-between;align-items:center;padding:0.65rem 0;border-bottom:1px solid var(--border)}
 .metric-row:last-child{border-bottom:none}
 .metric-name{font-size:0.65rem;font-weight:400;letter-spacing:0.15em;color:var(--muted2)}
-.metric-val{font-size:0.8rem;font-weight:400;color:var(--muted2);transition:all 0.4s;font-family:var(--serif);font-style:italic}
+.metric-val{font-size:0.8rem;font-weight:400;color:var(--muted2);transition:color 0.4s;font-family:var(--serif);font-style:italic}
 .metric-val.active{color:var(--accent2)}
-.metric-val.pulse{animation:metricpulse 1s ease infinite}
-@keyframes metricpulse{0%,100%{opacity:1}50%{opacity:0.5}}
-.metric-bar-wrap{display:flex;align-items:center;gap:8px}
-.metric-mini-bar{width:50px;height:2px;background:var(--border);overflow:hidden;flex-shrink:0}
-.metric-mini-fill{height:100%;background:var(--accent2);width:0;transition:width 0.6s ease}
-.scan-capture-btn{font-family:var(--sans);font-size:0.65rem;font-weight:500;letter-spacing:0.25em;padding:0.9rem;border:1px solid var(--accent);background:transparent;color:var(--accent);cursor:pointer;transition:all 0.3s;width:100%}
+
+.scan-capture-btn{
+  font-family:var(--sans);font-size:0.65rem;font-weight:500;letter-spacing:0.25em;
+  padding:0.9rem;border:1px solid var(--accent);background:transparent;
+  color:var(--accent);cursor:pointer;transition:all 0.3s;width:100%;
+}
 .scan-capture-btn:hover{background:rgba(139,58,26,0.06)}
 .scan-capture-btn:disabled{opacity:0.3;cursor:default;border-color:var(--border)}
 
@@ -134,87 +212,136 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:1
 .result-logo{font-family:var(--serif);font-size:1.1rem;font-weight:400;letter-spacing:0.25em;color:var(--text)}
 .result-date{font-size:0.55rem;font-weight:400;letter-spacing:0.2em;color:var(--muted2)}
 
-/* ══ STORY CARD 9:16 — theme-aware ══ */
+/* ══ STORY CARD 9:16 ══ */
 #storyCard{
   width:100%;max-width:360px;aspect-ratio:9/16;
   background:#F5F1EB;
-  border:1px solid var(--theme-border);
+  border:1px solid var(--border2);
   padding:2rem 1.75rem;
   display:flex;flex-direction:column;
   position:relative;overflow:hidden;
-  transition:border-color 0.6s;
 }
-#storyCard::before{content:'';position:absolute;top:0;left:2rem;right:2rem;height:2px;background:var(--theme-accent);transition:background 0.6s}
 
-.card-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1.25rem;padding-top:0.5rem}
+/* top accent line */
+#storyCard::before{
+  content:'';position:absolute;top:0;left:2rem;right:2rem;height:2px;
+  background:var(--accent2);
+}
+
+.card-header{
+  display:flex;justify-content:space-between;align-items:flex-start;
+  margin-bottom:1.5rem;padding-top:0.5rem;
+}
 .card-brand{font-family:var(--serif);font-size:0.9rem;font-weight:400;letter-spacing:0.3em;color:var(--text)}
-.card-meta{text-align:right}
-.card-meta-line{font-size:0.48rem;font-weight:400;letter-spacing:0.15em;color:var(--muted2);display:block;margin-bottom:2px}
+.card-id{font-size:0.5rem;font-weight:400;letter-spacing:0.15em;color:var(--muted2);margin-top:2px}
 
-/* WELLNESS RING */
-.card-wellness-block{text-align:center;margin-bottom:1rem}
-.card-wellness-label{font-size:0.5rem;font-weight:500;letter-spacing:0.65em;text-transform:uppercase;color:var(--theme-accent);display:block;margin-bottom:0.4rem;transition:color 0.6s}
-.card-wellness-ring{position:relative;width:86px;height:86px;margin:0 auto 0.6rem}
+/* WELLNESS hero */
+.card-wellness-block{
+  text-align:center;
+  margin-bottom:1.25rem;
+}
+.card-wellness-label{
+  font-size:0.5rem;font-weight:500;letter-spacing:0.65em;
+  text-transform:uppercase;color:var(--accent2);
+  display:block;margin-bottom:0.4rem;
+}
+.card-wellness-ring{position:relative;width:90px;height:90px;margin:0 auto 0.6rem}
 .card-wellness-ring svg{width:100%;height:100%;transform:rotate(-90deg)}
 .wring-track{fill:none;stroke:var(--border2);stroke-width:3}
-.wring-fill{fill:none;stroke:var(--theme-accent);stroke-width:2.5;stroke-dasharray:245;stroke-dashoffset:245;transition:stroke-dashoffset 1.8s cubic-bezier(0.23,1,0.32,1),stroke 0.6s;stroke-linecap:round}
+.wring-fill{fill:none;stroke:var(--accent2);stroke-width:2.5;stroke-dasharray:251.3;stroke-dashoffset:251.3;transition:stroke-dashoffset 1.8s cubic-bezier(0.23,1,0.32,1);stroke-linecap:round}
 .wring-inner{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
-.wring-num{font-family:var(--serif);font-size:1.7rem;font-weight:400;color:var(--text);line-height:1}
+.wring-num{font-family:var(--serif);font-size:1.8rem;font-weight:400;color:var(--text);line-height:1}
 .wring-sub{font-size:0.42rem;font-weight:500;letter-spacing:0.2em;color:var(--muted2);margin-top:1px}
-.card-wellness-tag{font-size:0.55rem;font-weight:500;letter-spacing:0.25em;color:var(--theme-accent);display:inline-block;border:1px solid var(--theme-border);padding:3px 14px;transition:all 0.6s}
+.card-wellness-tag{
+  font-size:0.55rem;font-weight:500;letter-spacing:0.25em;
+  color:var(--accent);display:inline-block;
+  border:1px solid rgba(139,58,26,0.35);padding:3px 14px;
+}
 
 /* BIO AGE */
-.card-bioage{display:flex;justify-content:center;align-items:stretch;border:1px solid var(--border);margin-bottom:1rem}
-.card-ba-cell{flex:1;text-align:center;padding:0.6rem 0.3rem}
+.card-bioage{
+  display:flex;justify-content:center;align-items:stretch;
+  border:1px solid var(--border);margin-bottom:1.1rem;
+}
+.card-ba-cell{flex:1;text-align:center;padding:0.65rem 0.4rem}
 .card-ba-cell+.card-ba-cell{border-left:1px solid var(--border)}
-.card-ba-val{font-family:var(--serif);font-size:1.25rem;font-weight:400;color:var(--text);line-height:1;display:block}
-.card-ba-val.highlight{color:var(--theme-accent);transition:color 0.6s}
-.card-ba-lbl{font-size:0.42rem;font-weight:500;letter-spacing:0.18em;color:var(--muted2);display:block;margin-top:3px;text-transform:uppercase}
+.card-ba-val{font-family:var(--serif);font-size:1.35rem;font-weight:400;color:var(--text);line-height:1;display:block}
+.card-ba-val.highlight{color:var(--accent2)}
+.card-ba-lbl{font-size:0.45rem;font-weight:500;letter-spacing:0.2em;color:var(--muted2);display:block;margin-top:3px;text-transform:uppercase}
 
-/* RADAR CHART */
-.card-radar{margin-bottom:1rem;display:flex;flex-direction:column;align-items:center}
-.card-radar-label{font-size:0.48rem;font-weight:500;letter-spacing:0.35em;color:var(--muted2);text-transform:uppercase;margin-bottom:0.4rem}
-.radar-svg{overflow:visible}
+/* SYSTEMS */
+.card-systems{display:flex;flex-direction:column;gap:0.5rem;margin-bottom:1.1rem}
+.card-sys-row{display:grid;grid-template-columns:58px 1fr 26px;align-items:center;gap:0.6rem}
+.card-sys-name{font-size:0.55rem;font-weight:500;letter-spacing:0.12em;color:var(--muted);text-transform:uppercase}
+.card-sys-bar{height:2px;background:var(--border);overflow:hidden}
+.card-sys-fill{height:100%;width:0;transition:width 1.4s cubic-bezier(0.23,1,0.32,1)}
+.card-sys-val{font-size:0.62rem;font-weight:400;color:var(--muted2);text-align:right;font-family:var(--serif)}
 
 /* INSIGHT */
-.card-insight{border-left:2px solid var(--theme-accent);padding-left:0.9rem;margin-bottom:0.85rem;transition:border-color 0.6s;flex:1}
-.card-insight-lbl{font-size:0.42rem;font-weight:500;letter-spacing:0.35em;color:var(--theme-accent);text-transform:uppercase;margin-bottom:0.3rem;transition:color 0.6s}
-.card-insight-text{font-family:var(--serif);font-size:0.82rem;font-weight:400;font-style:italic;color:var(--text2);line-height:1.6}
+.card-insight{
+  flex:1;
+  padding-left:0.9rem;border-left:2px solid var(--accent2);
+  margin-bottom:1rem;
+}
+.card-insight-lbl{font-size:0.48rem;font-weight:500;letter-spacing:0.35em;color:var(--accent2);text-transform:uppercase;margin-bottom:0.35rem}
+.card-insight-text{font-family:var(--serif);font-size:0.85rem;font-weight:400;font-style:italic;color:var(--text2);line-height:1.6}
 
 /* ACTIONS */
-.card-actions{display:flex;flex-direction:column;gap:0.35rem;margin-bottom:0.85rem}
+.card-actions{display:flex;flex-direction:column;gap:0.4rem;margin-bottom:1rem}
 .card-action{display:flex;gap:0.6rem;align-items:flex-start}
-.card-action-n{font-size:0.45rem;font-weight:500;color:var(--amber);min-width:14px;margin-top:3px}
-.card-action-t{font-size:0.65rem;font-weight:300;color:var(--muted);line-height:1.5}
+.card-action-n{font-size:0.48rem;font-weight:500;color:var(--amber);min-width:14px;margin-top:3px}
+.card-action-t{font-size:0.68rem;font-weight:300;color:var(--muted);line-height:1.5;letter-spacing:0.02em}
 
 /* FOOTER */
-.card-footer{border-top:1px solid var(--border);padding-top:0.65rem;display:flex;justify-content:space-between;align-items:flex-end;margin-top:auto}
-.card-sig{font-family:var(--serif);font-size:0.72rem;font-weight:400;font-style:italic;color:var(--muted)}
-.card-disc{font-size:0.4rem;font-weight:300;color:var(--muted2);line-height:1.5;max-width:150px;text-align:right}
+.card-footer{
+  border-top:1px solid var(--border);padding-top:0.7rem;
+  display:flex;justify-content:space-between;align-items:flex-end;
+  margin-top:auto;
+}
+.card-sig{font-family:var(--serif);font-size:0.75rem;font-weight:400;font-style:italic;color:var(--muted)}
+.card-disc{font-size:0.42rem;font-weight:300;color:var(--muted2);line-height:1.5;max-width:150px;text-align:right}
 
 /* RESULT BUTTONS */
 .result-btns{display:flex;gap:0.75rem;width:100%;max-width:400px}
-.btn-save{flex:1;font-family:var(--sans);font-size:0.62rem;font-weight:500;letter-spacing:0.25em;padding:0.9rem;border:1px solid var(--accent);background:transparent;color:var(--accent);cursor:pointer;transition:all 0.2s}
+.btn-save{
+  flex:1;font-family:var(--sans);font-size:0.62rem;font-weight:500;
+  letter-spacing:0.25em;padding:0.9rem;
+  border:1px solid var(--accent);background:transparent;color:var(--accent);
+  cursor:pointer;transition:all 0.2s;
+}
 .btn-save:hover{background:rgba(139,58,26,0.06)}
-.btn-restart{font-family:var(--sans);font-size:0.62rem;font-weight:400;letter-spacing:0.2em;padding:0.9rem 1.5rem;border:1px solid var(--border);background:transparent;color:var(--muted2);cursor:pointer;transition:all 0.2s}
+.btn-restart{
+  font-family:var(--sans);font-size:0.62rem;font-weight:400;
+  letter-spacing:0.2em;padding:0.9rem 1.5rem;
+  border:1px solid var(--border);background:transparent;color:var(--muted2);
+  cursor:pointer;transition:all 0.2s;
+}
 .btn-restart:hover{border-color:var(--border2);color:var(--muted)}
 
 /* TOAST */
-.scan-toast{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(0.93);font-family:var(--serif);font-size:1.2rem;font-weight:400;font-style:italic;color:var(--accent);background:rgba(245,241,235,0.97);border:1px solid rgba(184,92,53,0.35);padding:1rem 2.5rem;opacity:0;transition:all 0.3s;pointer-events:none;z-index:1000;white-space:nowrap}
+.scan-toast{
+  position:fixed;top:50%;left:50%;
+  transform:translate(-50%,-50%) scale(0.93);
+  font-family:var(--serif);font-size:1.2rem;font-weight:400;font-style:italic;
+  color:var(--accent);background:rgba(245,241,235,0.97);
+  border:1px solid rgba(184,92,53,0.35);
+  padding:1rem 2.5rem;opacity:0;transition:all 0.3s;
+  pointer-events:none;z-index:1000;white-space:nowrap;
+}
 .scan-toast.show{opacity:1;transform:translate(-50%,-50%) scale(1)}
-
-/* COUNT UP */
-@keyframes countup{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
-.count-anim{animation:countup 0.4s ease}
 </style>
 </head>
 <body>
 
+<!-- INTRO -->
 <section id="s-intro" class="screen active">
   <span class="vital-wordmark">VITAL</span>
   <span class="wellness-hero">Wellness Profil Analizi</span>
   <div class="intro-rule"></div>
-  <p class="intro-desc">Sorular, yüz analizi ve el analizi —<br><strong>kişisel biyolojik profilin ve wellness tavsiyelerin.</strong></p>
+  <p class="intro-desc">
+    Sorular, yüz analizi ve el analizi — üç veri kaynağından<br>
+    <strong>kişisel biyolojik profilin ve wellness tavsiyelerin.</strong>
+  </p>
   <div class="step-list">
     <div class="step-item"><span class="step-n">01</span><span class="step-text">8 kısa soru</span></div>
     <div class="step-item"><span class="step-n">02</span><span class="step-text">Yüz analizi — cilt &amp; yorgunluk</span></div>
@@ -224,6 +351,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:1
   <button class="btn-start" onclick="startQuestions()">Başla</button>
 </section>
 
+<!-- QUESTIONS -->
 <section id="s-questions" class="screen">
   <div class="q-header">
     <span class="q-logo">VITAL</span>
@@ -231,11 +359,9 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:1
   </div>
   <div class="q-bar"><div class="q-bar-fill" id="qBarFill" style="width:0%"></div></div>
   <div class="q-card">
-    <div class="q-inner" id="qInner">
-      <div class="q-domain" id="qDomain"></div>
-      <div class="q-text" id="qText"></div>
-      <div class="q-opts" id="qOpts"></div>
-    </div>
+    <div class="q-domain" id="qDomain"></div>
+    <div class="q-text" id="qText"></div>
+    <div class="q-opts" id="qOpts"></div>
   </div>
   <div class="q-nav">
     <button class="btn-ghost" onclick="qBack()">← Geri</button>
@@ -243,6 +369,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:1
   </div>
 </section>
 
+<!-- SCAN -->
 <section id="s-scan" class="screen">
   <div class="scan-header">
     <span class="scan-logo">VITAL</span>
@@ -260,13 +387,16 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:1
       </div>
       <video id="videoEl" autoplay muted playsinline class="cam-video"></video>
       <canvas id="canvasEl" class="cam-canvas"></canvas>
-      <div class="cam-corners"><div class="c tl"></div><div class="c tr"></div><div class="c bl"></div><div class="c br"></div></div>
+      <div class="cam-corners">
+        <div class="c tl"></div><div class="c tr"></div>
+        <div class="c bl"></div><div class="c br"></div>
+      </div>
       <div class="cam-status" id="camStatus">Kamera aktif</div>
     </div>
     <div class="scan-info">
       <div>
         <div class="scan-title" id="scanTitle">Yüzünü kameraya yönelt</div>
-        <p class="scan-desc" id="scanDesc">İyi aydınlatılmış bir ortamda yüzünü kameraya doğru tut.</p>
+        <p class="scan-desc" id="scanDesc">İyi aydınlatılmış bir ortamda yüzünü kameraya doğru tut. Analiz 3–4 saniye sürer.</p>
       </div>
       <div class="scan-metrics" id="scanMetrics"></div>
       <button class="scan-capture-btn" id="captureBtn" onclick="captureNow()" disabled>Analizi Kaydet</button>
@@ -274,6 +404,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:1
   </div>
 </section>
 
+<!-- PROCESSING -->
 <section id="s-processing" class="screen">
   <div class="proc-logo">VITAL</div>
   <div class="proc-sub">Wellness profili oluşturuluyor</div>
@@ -287,25 +418,31 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:1
   <div class="proc-steps" id="procSteps"></div>
 </section>
 
+<!-- RESULT -->
 <section id="s-result" class="screen">
   <div class="result-header">
     <span class="result-logo">VITAL</span>
     <span class="result-date" id="resultDate"></span>
   </div>
+
   <div id="storyCard">
     <div class="card-header">
-      <div><div class="card-brand">VITAL</div><div id="cardName" style="font-family:var(--serif);font-size:0.75rem;font-weight:400;font-style:italic;color:var(--muted);margin-top:2px;letter-spacing:0.05em"></div></div>
-      <div class="card-meta">
-        <span class="card-meta-line" id="cardDate">—</span>
-        <span class="card-meta-line" id="cardReportId">—</span>
+      <div>
+        <div class="card-brand">VITAL</div>
+        <div class="card-id" id="cardId">Wellness Profili</div>
+      </div>
+      <div style="text-align:right">
+        <div class="card-id" id="cardDate" style="margin-bottom:2px">—</div>
+        <div class="card-id" id="cardReportId">—</div>
       </div>
     </div>
+
     <div class="card-wellness-block">
       <span class="card-wellness-label">Wellness Skoru</span>
       <div class="card-wellness-ring">
         <svg viewBox="0 0 90 90">
-          <circle class="wring-track" cx="45" cy="45" r="39"/>
-          <circle class="wring-fill" id="scoreRingFill" cx="45" cy="45" r="39"/>
+          <circle class="wring-track" cx="45" cy="45" r="40"/>
+          <circle class="wring-fill" id="scoreRingFill" cx="45" cy="45" r="40"/>
         </svg>
         <div class="wring-inner">
           <span class="wring-num" id="cardWellness">—</span>
@@ -314,25 +451,37 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:1
       </div>
       <div class="card-wellness-tag" id="cardTag">—</div>
     </div>
+
     <div class="card-bioage">
-      <div class="card-ba-cell"><span class="card-ba-val highlight" id="cardBioAge">—</span><span class="card-ba-lbl">Biyolojik Yaş</span></div>
-      <div class="card-ba-cell"><span class="card-ba-val" id="cardCalAge">—</span><span class="card-ba-lbl">Takvim Yaşı</span></div>
-      <div class="card-ba-cell"><span class="card-ba-val" id="cardDiff">—</span><span class="card-ba-lbl">Fark</span></div>
+      <div class="card-ba-cell">
+        <span class="card-ba-val highlight" id="cardBioAge">—</span>
+        <span class="card-ba-lbl">Biyolojik Yaş</span>
+      </div>
+      <div class="card-ba-cell">
+        <span class="card-ba-val" id="cardCalAge">—</span>
+        <span class="card-ba-lbl">Takvim Yaşı</span>
+      </div>
+      <div class="card-ba-cell">
+        <span class="card-ba-val" id="cardDiff">—</span>
+        <span class="card-ba-lbl">Fark</span>
+      </div>
     </div>
-    <div class="card-radar">
-      <div class="card-radar-label">Sistem Profili</div>
-      <svg class="radar-svg" id="radarSvg" width="160" height="140" viewBox="0 0 160 140"></svg>
-    </div>
+
+    <div class="card-systems" id="cardSystems"></div>
+
     <div class="card-insight">
       <div class="card-insight-lbl">Kişisel Bulgu</div>
       <div class="card-insight-text" id="cardInsight">Analiz ediliyor…</div>
     </div>
+
     <div class="card-actions" id="cardActions"></div>
+
     <div class="card-footer">
       <span class="card-sig">Dr. Bengi Su Ege</span>
       <span class="card-disc">Bilgilendirme amaçlıdır. Tanı &amp; tedavi içermez.</span>
     </div>
   </div>
+
   <div class="result-btns">
     <button class="btn-save" onclick="saveCard()">↓ Wellness Kartını İndir</button>
     <button class="btn-restart" onclick="restart()">↺ Yeniden</button>
@@ -343,7 +492,6 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:1
 
 <script>
 const QUESTIONS=[
-  {domain:'Profil',q:'Adın ve soyadın nedir?',opts:[],key:'name',type:'text'},
   {domain:'Uyku',q:'Gece ortalama kaç saat uyuyorsun?',opts:['8 saat ve üzeri — dinlenmiş uyanıyorum','6–7 saat — çoğunlukla yeterli','4–5 saat — az uyuduğumu fark ediyorum','4 saatten az — kronik uyku açığım'],key:'sleep'},
   {domain:'Enerji',q:'Gün içinde enerji seviyeni nasıl tanımlarsın?',opts:['Sabahtan akşama stabil ve yüksek','Öğleden sonra belirgin düşüş yaşıyorum','Gün boyu düşük, zorlanıyorum','Sürekli yorgun ve bitkin hissediyorum'],key:'energy'},
   {domain:'Beslenme',q:'Günlük beslenme düzenin nasıl?',opts:['Dengeli, düzenli ve çeşitli öğünler','Genel olarak iyi, ama atlanan öğünler var','Düzensiz, çoğunlukla hazır ve işlenmiş gıda','Beslenme alışkanlıklarım oldukça kötü'],key:'nutrition'},
@@ -353,65 +501,46 @@ const QUESTIONS=[
   {domain:'Hareket',q:'Haftada kaç gün düzenli fiziksel aktivite yapıyorsun?',opts:['4 gün ve üzeri — düzenli ve aktifim','Haftada 2–3 gün','Haftada 1 gün ya da daha az','Neredeyse hiç hareket etmiyorum'],key:'activity'},
   {domain:'Yaş',q:'Kaç yaşındasın?',opts:['18–25','26–35','36–45','46+'],key:'age'},
 ];
+
 const AGE_MAP={'18–25':22,'26–35':30,'36–45':40,'46+':50};
 const SCORE_MAP=[100,70,35,10];
 
-let answers={},currentQ=0,faceData={},handData={},scanPhase=0;
-let camStream=null,mpFace=null,mpHands=null,mpCam=null,captureReady=false;
+let answers={},currentQ=0;
+let faceData={},handData={};
+let scanPhase=0;
+let camStream=null,mpFace=null,mpHands=null,mpCam=null;
+let captureReady=false;
 
-/* ── SCREEN TRANSITIONS ── */
-function showScreen(id){
-  const current=document.querySelector('.screen.active');
-  const next=document.getElementById(id);
-  if(current){
-    current.classList.add('exit');
-    setTimeout(()=>{current.classList.remove('active','exit','visible')},350);
-  }
-  setTimeout(()=>{
-    next.classList.add('active');
-    requestAnimationFrame(()=>requestAnimationFrame(()=>next.classList.add('visible')));
-  },current?200:0);
-}
-
+function showScreen(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active')}
 function restart(){answers={};currentQ=0;faceData={};handData={};scanPhase=0;captureReady=false;stopCamera();showScreen('s-intro')}
 
-/* ── QUESTIONS with slide animation ── */
-function startQuestions(){showScreen('s-questions');setTimeout(loadQ,250)}
-
+/* QUESTIONS */
+function startQuestions(){showScreen('s-questions');loadQ()}
 function loadQ(){
-  const inner=document.getElementById('qInner');
-  inner.classList.add('slide-out');
-  setTimeout(()=>{
-    const q=QUESTIONS[currentQ];
-    document.getElementById('qProgress').textContent=(currentQ+1)+' / 8';
-    document.getElementById('qBarFill').style.width=((currentQ/9)*100)+'%';
-    document.getElementById('qDomain').textContent=q.domain;
-    document.getElementById('qText').textContent=q.q;
-    document.getElementById('qOpts').innerHTML=q.opts.map((o,i)=>`
-      <button class="q-opt ${answers[q.key]===i?'selected':''}" onclick="selectOpt(${i},this)">
-        <span class="q-opt-dot"></span>${o}
-      </button>`).join('');
-    document.getElementById('qNext').disabled=answers[q.key]===undefined;
-    inner.classList.remove('slide-out');
-    inner.classList.add('slide-in');
-    requestAnimationFrame(()=>requestAnimationFrame(()=>{
-      inner.classList.remove('slide-in');
-    }));
-  },220);
+  const q=QUESTIONS[currentQ];
+  document.getElementById('qProgress').textContent=(currentQ+1)+' / 8';
+  document.getElementById('qBarFill').style.width=((currentQ/8)*100)+'%';
+  document.getElementById('qDomain').textContent=q.domain;
+  document.getElementById('qText').textContent=q.q;
+  document.getElementById('qOpts').innerHTML=q.opts.map((o,i)=>`
+    <button class="q-opt ${answers[q.key]===i?'selected':''}" onclick="selectOpt(${i},this)">
+      <span class="q-opt-dot"></span>${o}
+    </button>`).join('');
+  document.getElementById('qNext').disabled=answers[q.key]===undefined;
 }
-
 function selectOpt(idx,el){
   document.querySelectorAll('.q-opt').forEach(e=>e.classList.remove('selected'));
-  el.classList.add('selected');
-  answers[QUESTIONS[currentQ].key]=idx;
+  el.classList.add('selected');answers[QUESTIONS[currentQ].key]=idx;
   document.getElementById('qNext').disabled=false;
 }
-function qNext(){if(answers[QUESTIONS[currentQ].key]===undefined)return;currentQ++;if(currentQ>=9){startScan();return}loadQ()}
+function qNext(){
+  if(answers[QUESTIONS[currentQ].key]===undefined)return;
+  currentQ++;if(currentQ>=8){startScan();return}loadQ();
+}
 function qBack(){if(currentQ===0){showScreen('s-intro');return}currentQ--;loadQ()}
 
-/* ── SCAN ── */
-function startScan(){scanPhase=0;showScreen('s-scan');setTimeout(()=>{setScanPhaseUI();initCamera()},250)}
-
+/* SCAN */
+function startScan(){scanPhase=0;showScreen('s-scan');setScanPhaseUI();initCamera()}
 function setScanPhaseUI(){
   const phases=[
     {title:'Yüzünü kameraya yönelt',desc:'İyi ışıklı bir ortamda, yüzünü kameraya doğru tut.',label:'YÜZ ANALİZİ — 1/2',
@@ -424,13 +553,7 @@ function setScanPhaseUI(){
   document.getElementById('scanDesc').textContent=p.desc;
   document.getElementById('scanPhaseLabel').textContent=p.label;
   document.getElementById('scanMetrics').innerHTML=p.metrics.map(m=>`
-    <div class="metric-row">
-      <span class="metric-name">${m.name}</span>
-      <div class="metric-bar-wrap">
-        <div class="metric-mini-bar"><div class="metric-mini-fill" id="mb-${m.id}"></div></div>
-        <span class="metric-val" id="${m.id}">—</span>
-      </div>
-    </div>`).join('');
+    <div class="metric-row"><span class="metric-name">${m.name}</span><span class="metric-val" id="${m.id}">Bekleniyor</span></div>`).join('');
   document.getElementById('stage0').className='scan-stage'+(scanPhase===0?' active':' done');
   document.getElementById('stage1').className='scan-stage'+(scanPhase===1?' active':'');
   document.getElementById('captureBtn').disabled=true;captureReady=false;
@@ -463,7 +586,7 @@ function stopCamera(){
   if(camStream){camStream.getTracks().forEach(t=>t.stop());camStream=null}
 }
 
-/* ── FACE MESH ── */
+/* FACE MESH */
 async function initFaceMesh(video){
   mpFace=new FaceMesh({locateFile:f=>`https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh@0.4.1633559619/${f}`});
   mpFace.setOptions({maxNumFaces:1,refineLandmarks:true,minDetectionConfidence:0.7,minTrackingConfidence:0.6});
@@ -471,10 +594,11 @@ async function initFaceMesh(video){
   mpCam=new Camera(video,{onFrame:async()=>{if(mpFace)await mpFace.send({image:video})},width:640,height:480});
   await mpCam.start();
 }
-
 let faceFrames=[];
 function onFaceResults(results){
-  const canvas=document.getElementById('canvasEl'),ctx=canvas.getContext('2d'),video=document.getElementById('videoEl');
+  const canvas=document.getElementById('canvasEl');
+  const ctx=canvas.getContext('2d');
+  const video=document.getElementById('videoEl');
   canvas.width=video.videoWidth||640;canvas.height=video.videoHeight||480;
   ctx.clearRect(0,0,canvas.width,canvas.height);
   if(!results.multiFaceLandmarks||!results.multiFaceLandmarks.length)return;
@@ -483,9 +607,9 @@ function onFaceResults(results){
   const a=analyzeFace(lm,canvas);
   faceFrames.push(a);if(faceFrames.length>15)faceFrames.shift();
   const avg=avgFrames(faceFrames);
-  updateMetricLive('m-skin',avg.skinScore>=70?'İyi':'Gelişim gerekli',avg.skinScore);
-  updateMetricLive('m-fatigue',avg.fatigueScore<=30?'Düşük':'Yüksek',100-avg.fatigueScore);
-  updateMetricLive('m-sym',avg.symScore>=75?'Dengeli':'Asimetri',avg.symScore);
+  updateMetric('m-skin',avg.skinScore>=70?'İyi':'Gelişim gerekli',avg.skinScore);
+  updateMetric('m-fatigue',avg.fatigueScore<=30?'Düşük':'Yüksek',avg.fatigueScore);
+  updateMetric('m-sym',avg.symScore>=75?'Dengeli':'Hafif asimetri',avg.symScore);
 }
 function analyzeFace(lm,canvas){
   const w=canvas.width,h=canvas.height,ctx=canvas.getContext('2d');
@@ -498,8 +622,7 @@ function analyzeFace(lm,canvas){
   const br=r*0.299+g*0.587+b*0.114;
   const skinScore=Math.min(100,Math.max(20,br>100?75:55));
   const p1=lm[159],p2=lm[145],p3=lm[33],p4=lm[133];
-  const w1=Math.sqrt((p3.x-p4.x)**2+(p3.y-p4.y)**2);
-  const ear=w1>0?Math.sqrt((p1.x-p2.x)**2+(p1.y-p2.y)**2)/w1:0.3;
+  const ear=Math.sqrt((p3.x-p4.x)**2+(p3.y-p4.y)**2)>0?Math.sqrt((p1.x-p2.x)**2+(p1.y-p2.y)**2)/Math.sqrt((p3.x-p4.x)**2+(p3.y-p4.y)**2):0.3;
   const fatigueScore=ear<0.25?70:ear<0.3?40:20;
   const diff=Math.abs(lm[33].y-lm[263].y)/Math.max(0.001,Math.abs(lm[263].x-lm[33].x));
   return{skinScore,fatigueScore,symScore:Math.max(50,100-diff*300)};
@@ -515,7 +638,7 @@ function drawFaceMesh(ctx,lm,w,h){
   ctx.restore();
 }
 
-/* ── HANDS MESH ── */
+/* HANDS MESH */
 async function initHandsMesh(video){
   mpHands=new Hands({locateFile:f=>`https://cdn.jsdelivr.net/npm/@mediapipe/hands@0.4.1646424915/${f}`});
   mpHands.setOptions({maxNumHands:1,modelComplexity:1,minDetectionConfidence:0.7,minTrackingConfidence:0.6});
@@ -525,7 +648,9 @@ async function initHandsMesh(video){
 }
 let handFrames=[];
 function onHandResults(results){
-  const canvas=document.getElementById('canvasEl'),ctx=canvas.getContext('2d'),video=document.getElementById('videoEl');
+  const canvas=document.getElementById('canvasEl');
+  const ctx=canvas.getContext('2d');
+  const video=document.getElementById('videoEl');
   canvas.width=video.videoWidth||640;canvas.height=video.videoHeight||480;
   ctx.clearRect(0,0,canvas.width,canvas.height);
   if(!results.multiHandLandmarks||!results.multiHandLandmarks.length)return;
@@ -534,9 +659,9 @@ function onHandResults(results){
   const a=analyzeHand(lm,canvas);
   handFrames.push(a);if(handFrames.length>15)handFrames.shift();
   const avg=avgFrames(handFrames);
-  updateMetricLive('m-nail',avg.nailScore>=65?'Normal':'Soluk',avg.nailScore);
-  updateMetricLive('m-vein',avg.veinScore>=60?'Görünür':'Düşük',avg.veinScore);
-  updateMetricLive('m-handtone',avg.handTone>=60?'Normal':'Soluk',avg.handTone);
+  updateMetric('m-nail',avg.nailScore>=65?'Normal':'Soluk',avg.nailScore);
+  updateMetric('m-vein',avg.veinScore>=60?'Görünür':'Düşük',avg.veinScore);
+  updateMetric('m-handtone',avg.handTone>=60?'Normal':'Soluk',avg.handTone);
 }
 function analyzeHand(lm,canvas){
   const ctx=canvas.getContext('2d'),w=canvas.width,h=canvas.height;
@@ -563,25 +688,18 @@ function drawHandSkeleton(ctx,lm,w,h){
   ctx.restore();
 }
 
-/* ── LIVE METRIC WITH MINI BAR + PULSE ── */
-function updateMetricLive(id,label,score){
-  const el=document.getElementById(id);
-  const bar=document.getElementById('mb-'+id);
-  if(!el)return;
-  el.textContent=label;
-  el.className='metric-val active pulse';
-  if(bar) bar.style.width=Math.min(100,score)+'%';
-  setTimeout(()=>{if(el)el.classList.remove('pulse')},2000);
-}
-
 function avgFrames(frames){
   if(!frames.length)return{};
   const keys=Object.keys(frames[0]),result={};
   keys.forEach(k=>{result[k]=Math.round(frames.reduce((s,f)=>s+(f[k]||0),0)/frames.length)});
   return result;
 }
+function updateMetric(id,label,score){
+  const el=document.getElementById(id);if(!el)return;
+  el.textContent=label;el.className='metric-val'+(score>0?' active':'');
+}
 
-/* ── CAPTURE ── */
+/* CAPTURE */
 function captureNow(){
   if(!captureReady)return;
   const toast=document.getElementById('scanToast');
@@ -589,7 +707,11 @@ function captureNow(){
     const avg=avgFrames(faceFrames);
     faceData={skin:avg.skinScore||60,fatigue:avg.fatigueScore||40,symmetry:avg.symScore||70};
     toast.textContent='Yüz analizi kaydedildi';toast.classList.add('show');
-    setTimeout(()=>{toast.classList.remove('show');scanPhase=1;stopCamera();document.getElementById('camLoading').classList.remove('hidden');setScanPhaseUI();initCamera()},1200);
+    setTimeout(()=>{
+      toast.classList.remove('show');scanPhase=1;stopCamera();
+      document.getElementById('camLoading').classList.remove('hidden');
+      setScanPhaseUI();initCamera();
+    },1200);
   }else{
     const avg=avgFrames(handFrames);
     handData={nail:avg.nailScore||60,vein:avg.veinScore||55,tone:avg.handTone||60};
@@ -598,104 +720,28 @@ function captureNow(){
   }
 }
 
-/* ── PROCESSING ── */
+/* PROCESSING */
 function runProcessing(){
   showScreen('s-processing');
   const steps=['Soru verileri hesaplanıyor','Yüz analizi işleniyor','El analizi değerlendiriliyor','Biyolojik yaş hesaplanıyor','Wellness tavsiyeleri oluşturuluyor'];
   document.getElementById('procSteps').innerHTML=steps.map((s,i)=>`<div class="proc-step" id="ps${i}"><div class="proc-dot"></div>${s}</div>`).join('');
   let pct=0;const circ=320.4;
   const circle=document.getElementById('procCircle'),pctEl=document.getElementById('procPct');
-  steps.forEach((_,i)=>setTimeout(()=>{document.getElementById('ps'+i).className='proc-step active';if(i>0)document.getElementById('ps'+(i-1)).className='proc-step done'},i*600));
-  const iv=setInterval(()=>{pct+=2;circle.style.strokeDashoffset=circ-(circ*pct/100);pctEl.textContent=pct+'%';if(pct>=100){clearInterval(iv);document.getElementById('ps'+(steps.length-1)).className='proc-step done';setTimeout(buildResult,400)}},60);
+  steps.forEach((_,i)=>setTimeout(()=>{
+    document.getElementById('ps'+i).className='proc-step active';
+    if(i>0)document.getElementById('ps'+(i-1)).className='proc-step done';
+  },i*600));
+  const iv=setInterval(()=>{
+    pct+=2;circle.style.strokeDashoffset=circ-(circ*pct/100);pctEl.textContent=pct+'%';
+    if(pct>=100){clearInterval(iv);document.getElementById('ps'+(steps.length-1)).className='proc-step done';setTimeout(buildResult,400)}
+  },60);
 }
 
-/* ── COUNTUP ANIMATION ── */
-function countUp(el,target,duration=1200){
-  const start=Date.now();
-  const tick=()=>{
-    const elapsed=Date.now()-start;
-    const progress=Math.min(1,elapsed/duration);
-    const ease=1-Math.pow(1-progress,3);
-    el.textContent=Math.round(ease*target);
-    el.classList.add('count-anim');
-    if(progress<1)requestAnimationFrame(tick);
-    else{el.textContent=target;el.classList.remove('count-anim')}
-  };
-  requestAnimationFrame(tick);
-}
-
-/* ── RADAR / SPIDER CHART ── */
-function drawRadar(systems,themeColor){
-  const svg=document.getElementById('radarSvg');
-  const cx=80,cy=72,r=52;
-  const n=systems.length;
-  const labels=systems.map(s=>s.name);
-  const scores=systems.map(s=>s.score/100);
-  const colors={accent2:'#B85C35',green:'#3A6B45',amber:'#C49020'};
-  const fill=colors[themeColor]||'#B85C35';
-
-  const pts=scores.map((s,i)=>{
-    const angle=(i/n)*Math.PI*2-Math.PI/2;
-    return{x:cx+r*s*Math.cos(angle),y:cy+r*s*Math.sin(angle)};
-  });
-  const gridPts=(level)=>Array.from({length:n},(_,i)=>{
-    const angle=(i/n)*Math.PI*2-Math.PI/2;
-    return{x:cx+r*level*Math.cos(angle),y:cy+r*level*Math.sin(angle)};
-  });
-
-  let html='';
-  // grid
-  [0.25,0.5,0.75,1].forEach(l=>{
-    const gp=gridPts(l);
-    html+=`<polygon points="${gp.map(p=>`${p.x},${p.y}`).join(' ')}" fill="none" stroke="rgba(60,45,30,0.1)" stroke-width="0.5"/>`;
-  });
-  // axes
-  Array.from({length:n},(_,i)=>{
-    const angle=(i/n)*Math.PI*2-Math.PI/2;
-    html+=`<line x1="${cx}" y1="${cy}" x2="${cx+r*Math.cos(angle)}" y2="${cy+r*Math.sin(angle)}" stroke="rgba(60,45,30,0.1)" stroke-width="0.5"/>`;
-  });
-  // filled area
-  html+=`<polygon points="${pts.map(p=>`${p.x},${p.y}`).join(' ')}" fill="${fill}" fill-opacity="0.12" stroke="${fill}" stroke-width="1.5" stroke-linejoin="round"/>`;
-  // dots
-  pts.forEach(p=>{html+=`<circle cx="${p.x}" cy="${p.y}" r="2.5" fill="${fill}"/>`});
-  // labels
-  labels.forEach((l,i)=>{
-    const angle=(i/n)*Math.PI*2-Math.PI/2;
-    const lx=cx+(r+14)*Math.cos(angle);
-    const ly=cy+(r+14)*Math.sin(angle);
-    const anchor=lx<cx-5?'end':lx>cx+5?'start':'middle';
-    html+=`<text x="${lx}" y="${ly+3}" text-anchor="${anchor}" font-size="6" font-family="Inter,sans-serif" font-weight="500" fill="#8A7460" letter-spacing="0.5">${l.toUpperCase()}</text>`;
-  });
-
-  svg.innerHTML=html;
-}
-
-/* ── WELLNESS THEME ── */
-function applyTheme(wellness){
-  const root=document.documentElement;
-  if(wellness>=70){
-    root.style.setProperty('--theme-accent','#3A6B45');
-    root.style.setProperty('--theme-border','rgba(58,107,69,0.35)');
-    root.style.setProperty('--theme-bg','rgba(58,107,69,0.06)');
-    return 'green';
-  }else if(wellness>=45){
-    root.style.setProperty('--theme-accent','#C49020');
-    root.style.setProperty('--theme-border','rgba(196,144,32,0.35)');
-    root.style.setProperty('--theme-bg','rgba(196,144,32,0.06)');
-    return 'amber';
-  }else{
-    root.style.setProperty('--theme-accent','#A83030');
-    root.style.setProperty('--theme-border','rgba(168,48,48,0.35)');
-    root.style.setProperty('--theme-bg','rgba(168,48,48,0.06)');
-    return 'danger';
-  }
-}
-
-/* ── RESULT ── */
+/* RESULT */
 async function buildResult(){
   showScreen('s-result');
   const ageIdx=answers.age??1;
-  const calAge=AGE_MAP[QUESTIONS[8].opts[ageIdx]];
+  const calAge=AGE_MAP[QUESTIONS[7].opts[ageIdx]];
   const qScore=['sleep','energy','nutrition','stress','hormone','gut','activity'].reduce((s,k)=>s+(SCORE_MAP[answers[k]??2]||50),0)/7;
   const faceScore=(faceData.skin||60)*0.4+(100-(faceData.fatigue||40))*0.3+(faceData.symmetry||70)*0.3;
   const handScore=(handData.nail||60)*0.4+(handData.vein||55)*0.3+(handData.tone||60)*0.3;
@@ -707,47 +753,40 @@ async function buildResult(){
   const diff=bioAge-calAge;
 
   const systems=[
-    {name:'Uyku',score:SCORE_MAP[answers.sleep??2]},
-    {name:'Hormon',score:SCORE_MAP[answers.hormone??2]},
-    {name:'Sindirim',score:SCORE_MAP[answers.gut??2]},
-    {name:'Dolaşım',score:Math.round(handScore)},
-    {name:'Cilt',score:skinScore},
+    {name:'Uyku',score:SCORE_MAP[answers.sleep??2],color:'#B85C35'},
+    {name:'Hormon',score:SCORE_MAP[answers.hormone??2],color:'#C49020'},
+    {name:'Sindirim',score:SCORE_MAP[answers.gut??2],color:'#3A6B45'},
+    {name:'Dolaşım',score:Math.round(handScore),color:'#3A5B7A'},
+    {name:'Cilt',score:skinScore,color:'#7A3A5B'},
   ];
-
-  const themeKey=applyTheme(wellness);
 
   const now=new Date();
   const dateStr=now.toLocaleDateString('tr-TR',{day:'2-digit',month:'long',year:'numeric'}).toUpperCase();
   document.getElementById('resultDate').textContent=dateStr;
   document.getElementById('cardDate').textContent=dateStr;
-  const nameEl=document.getElementById('cardName');
-  if(nameEl) nameEl.textContent=answers.name||'';
   document.getElementById('cardReportId').textContent='VTL-'+Date.now().toString(36).toUpperCase().slice(-5);
+  document.getElementById('cardWellness').textContent=wellness;
+  document.getElementById('cardBioAge').textContent=bioAge;
+  document.getElementById('cardCalAge').textContent=calAge;
+  document.getElementById('cardDiff').textContent=(diff>0?'+':'')+diff;
+  document.getElementById('cardDiff').style.color=diff<=0?'#3A6B45':'#B85C35';
 
   const tags={high:'Optimal Düzey',mid:'Gelişim Aşaması',low:'Öncelikli Alan'};
   const level=wellness>=70?'high':wellness>=45?'mid':'low';
   document.getElementById('cardTag').textContent=tags[level];
 
-  // Count-up animations
-  setTimeout(()=>{
-    countUp(document.getElementById('cardWellness'),wellness,1400);
-    setTimeout(()=>countUp(document.getElementById('cardBioAge'),bioAge,800),200);
-    setTimeout(()=>{
-      document.getElementById('cardCalAge').textContent=calAge;
-      const diffEl=document.getElementById('cardDiff');
-      diffEl.textContent=(diff>0?'+':'')+diff;
-      diffEl.style.color=diff<=0?'#3A6B45':'#A83030';
-    },400);
-  },400);
-
-  // Ring animation
   setTimeout(()=>{
     const fill=document.getElementById('scoreRingFill');
-    if(fill) fill.style.strokeDashoffset=245-(245*wellness/100);
-  },500);
+    if(fill) fill.style.strokeDashoffset=251.3-(251.3*wellness/100);
+  },300);
 
-  // Radar chart
-  setTimeout(()=>drawRadar(systems,themeKey==='green'?'green':themeKey==='amber'?'amber':'accent2'),600);
+  document.getElementById('cardSystems').innerHTML=systems.map(s=>`
+    <div class="card-sys-row">
+      <div class="card-sys-name">${s.name}</div>
+      <div class="card-sys-bar"><div class="card-sys-fill" id="sf-${s.name}" style="background:${s.color}"></div></div>
+      <div class="card-sys-val">${s.score}</div>
+    </div>`).join('');
+  setTimeout(()=>systems.forEach(s=>{const el=document.getElementById('sf-'+s.name);if(el)el.style.width=s.score+'%'}),400);
 
   await generateInsights(wellness,skinScore,energyScore,bioAge,calAge,diff,systems);
 }
@@ -755,7 +794,7 @@ async function buildResult(){
 async function generateInsights(wellness,skin,energy,bioAge,calAge,diff,systems){
   const worst=systems.slice().sort((a,b)=>a.score-b.score)[0];
   const best=systems.slice().sort((a,b)=>b.score-a.score)[0];
-  const ageGroup=calAge<=25?'18-25':calAge<=35?'26-35':calAge<=45?'36-45':'46+';
+  const ageGroup = calAge<=25?'18-25':calAge<=35?'26-35':calAge<=45?'36-45':'46+';
   const prompt=`Sen Dr. Bengi Su Ege'nin VITAL wellness uygulamasısın. Kısa, net, bilimsel, samimi Türkçe yaz. İçerik hem kadın hem erkek için geçerli olsun — cinsiyete özgü dil kullanma.
 
 Kullanıcı verileri:
@@ -766,30 +805,38 @@ Kullanıcı verileri:
 - En güçlü sistem: ${best.name} (${best.score}/100)
 - Cilt: ${skin}/100, Enerji: ${energy}/100
 
-Tavsiyeler ${ageGroup} yaş grubuna ve biyolojik yaş farkına özel olsun.
+Tavsiyeler ${ageGroup} yaş grubuna ve biyolojik yaş farkına özel olsun. Örneğin 46+ için metabolik yavaşlama ve kortizol yönetimi, 18-25 için temel alışkanlık kurma, 26-35 için stres ve uyku optimizasyonu vb.
 
 Yalnızca JSON çıktısı ver, başka hiçbir şey yazma:
-{"insight":"Biyolojik yaş farkını merkeze alan tek italik cümle, max 92 karakter","action1":"Yaş grubuna ve en zayıf sisteme göre birinci aksiyon, max 70 karakter, somut","action2":"Yaş grubuna özel ikinci aksiyon, max 70 karakter, somut"}`;
+{
+  "insight": "Biyolojik yaş farkını ve yaş grubunu merkeze alan, tek italik cümle, max 95 karakter, kişisel ve tıbbi",
+  "action1": "Yaş grubuna ve en zayıf sisteme göre birinci aksiyon, max 72 karakter, somut ve yarın uygulanabilir",
+  "action2": "Yaş grubuna özel ikinci aksiyon, max 72 karakter, somut ve yarın uygulanabilir"
+}`;
 
   try{
-    const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:350,messages:[{role:'user',content:prompt}]})});
+    const res=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:350,messages:[{role:'user',content:prompt}]})
+    });
     const data=await res.json();
     const parsed=JSON.parse(data.content[0].text.replace(/```json|```/g,'').trim());
     document.getElementById('cardInsight').textContent=parsed.insight||'—';
     document.getElementById('cardActions').innerHTML=[parsed.action1,parsed.action2].map((a,i)=>`
       <div class="card-action"><span class="card-action-n">0${i+1}</span><span class="card-action-t">${a}</span></div>`).join('');
   }catch(e){
-    const fb={
-      insight:diff>3?`Biyolojik yaşın takvim yaşının ${diff} yıl önünde — bu tamamen değiştirilebilir.`:diff<-1?`Biyolojik yaşın takvim yaşından ${Math.abs(diff)} yıl genç — iyi bir tablo.`:'Biyolojik yaşın takvim yaşınla uyumlu, sağlam bir başlangıç.',
+    const fallback={
+      insight:diff>3?`Biyolojik yaşın takvim yaşının ${diff} yıl önünde — bu tamamen değiştirilebilir.`:diff<-1?`Biyolojik yaşın takvim yaşından ${Math.abs(diff)} yıl genç — iyi bir tablo.`:'Biyolojik yaşın takvim yaşınla uyumlu, sağlam bir başlangıç noktası.',
       action1:worst.name==='Uyku'?'Yatış saatini 30 dk erkene al, 3 hafta sabır et':worst.name==='Hormon'?'Endokrinoloji konsültasyonu + myo-inositol araştır':'Sabah 20 dk güneş ışığı — kortizol ritmi için en güçlü müdahale',
       action2:'Günde 8 bardak su ve düzenli öğün saatleri — temel ama etkisi kanıtlanmış'
     };
-    document.getElementById('cardInsight').textContent=fb.insight;
-    document.getElementById('cardActions').innerHTML=[fb.action1,fb.action2].map((a,i)=>`<div class="card-action"><span class="card-action-n">0${i+1}</span><span class="card-action-t">${a}</span></div>`).join('');
+    document.getElementById('cardInsight').textContent=fallback.insight;
+    document.getElementById('cardActions').innerHTML=[fallback.action1,fallback.action2].map((a,i)=>`
+      <div class="card-action"><span class="card-action-n">0${i+1}</span><span class="card-action-t">${a}</span></div>`).join('');
   }
 }
 
-/* ── SAVE ── */
+/* SAVE */
 function saveCard(){
   const card=document.getElementById('storyCard');
   const s=document.createElement('script');
@@ -803,12 +850,6 @@ function saveCard(){
   };
   document.head.appendChild(s);
 }
-
-// Kick off intro animation
-window.addEventListener('load',()=>{
-  const intro=document.getElementById('s-intro');
-  requestAnimationFrame(()=>requestAnimationFrame(()=>intro.classList.add('visible')));
-});
 </script>
 </body>
 </html>
